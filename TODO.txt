@@ -1,0 +1,5 @@
+# Things to add
+
+1. Logistic Regression - using data frames (pandas) and statsmodels
+2. Newton Raphson optimizer using Hessian calculations
+3. Regularization

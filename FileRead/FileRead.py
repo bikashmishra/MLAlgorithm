@@ -11,7 +11,8 @@ def readCSVintoArray(filename, skipheader):
     return data
 
 # read an ASCII file and output an array. Default delimiter is one space
-def readASCIIintoArray(filename, skipheader, delim=' '): 
+def readASCIIintoArray(filename, skipheader, delim=None): 
     with open(filename,"r") as inputfile:
-        data = np.loadtxt(inputfile, delimiter=' ', skiprows=skipheader)
+        print inputfile
+        data = np.loadtxt(inputfile, delimiter=delim, skiprows=skipheader)
     return data
