@@ -11,4 +11,4 @@ LIST OF ALGORITHMS
 1. Multivariate Linear Regression
 2. Logistic Regression
 3. Neural Networks
-4. 4. Naive Bayes classifiers (Gaussian and text classification)
+4. Naive Bayes classifiers (Gaussian and text classification)
