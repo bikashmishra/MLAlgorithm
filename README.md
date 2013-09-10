@@ -3,7 +3,7 @@ MLAlgorithm
 These are implementations of some Machine Learning Algorithms which are intended to be used as stand alone libraries. 
 This is a work in progress. 
 
-The eventual goal is to utilize the MapReduce paradigm to efficiently solve these Machine Learning algorithms. This will be done in Python via Hadoop streaming.
+The eventual goal is to utilize the MapReduce paradigm to efficiently solve these Machine Learning algorithms in parallel. 
 
 Below is the list of algorithms implemented (or under implementation) thus far.
 
