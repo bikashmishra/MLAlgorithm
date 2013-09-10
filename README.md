@@ -3,7 +3,7 @@ MLAlgorithm
 These are implementations of some Machine Learning Algorithms which are intended to be used as stand alone libraries. 
 This is a work in progress. 
 
-The eventual goal is to utilize the MapReduce paradigm to efficiently solve these Machine Learning algorithms in parallel. 
+The eventual goal is to develop appropriate parallel versions of these algorithms using different paradigms and architectures in mind (eg. MapReduce, Shared memory SIMD etc.). 
 
 Below is the list of algorithms implemented (or under implementation) thus far.
 
