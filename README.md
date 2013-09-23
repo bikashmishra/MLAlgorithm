@@ -17,4 +17,3 @@ LIST OF ALGORITHMS
 3. Neural Networks
 4. Naive Bayes classifiers (Gaussian and text classification)
 5. k-means clustering
-6. Recommendation System (collaborative filtering)
