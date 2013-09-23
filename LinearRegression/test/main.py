@@ -1,5 +1,5 @@
 from FileRead import readASCIIintoArray
-import LinearRegression as lr
+from LinearRegression import linearregression as lr
 import numpy as np
 import FeatureScaling as fs
 
@@ -11,7 +11,9 @@ def main():
     y = np.asmatrix(outdata[:,2]).T
     x, xmean, xsig = fs.MeanNormalizeMatrix(x)
     y, ymean, esig = fs.MeanNormalizeArray(y)
-    print lr.LinearReg(x,y, method = 'cg', maxiter=500,alpha=1.0)
+    my_lr1 = lr()
+    my_lr1.train(x,y, method = 'cg', maxiter=500,alpha=1.0)
+    print my_lr1.gettheta()
     
     print 'TEST2'
     filenm = "datamulti.txt"
@@ -20,8 +22,10 @@ def main():
     y = np.asmatrix(outdata[:,3]).T
     x, xmean, xsig = fs.MeanNormalizeMatrix(x)
     y, ymean, esig = fs.MeanNormalizeArray(y)
-    print lr.LinearReg(x,y,method = 'cg',maxiter=1000,alpha=1.0)
-    
+    my_lr2 = lr()
+    my_lr2.train(x,y,method = 'cg',maxiter=1000,alpha=1.0)
+    print my_lr2.gettheta()
+
 if __name__ == "__main__":
     main()
     
