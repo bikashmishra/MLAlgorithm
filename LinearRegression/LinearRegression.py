@@ -7,8 +7,11 @@
 import numpy as np
 from scipy import optimize
 
-class linearregression():
+class linearregression:
     
+    def __init__(self, lamda=1.0):
+        self.lamda_ = lamda
+        
     def calcHypothesis(self, x, theta):
         return x*np.asmatrix(theta).T
     
@@ -16,14 +19,21 @@ class linearregression():
         x,y = args
         m = x.shape[0]
         h = self.calcHypothesis(x, theta)
-        J = (1./(2.*m)*(h-y).T*(h-y))[0][0]
+        J = 1./(2.*m)*((h-y).T*(h-y) + self.lamda_*self.regularize(theta))[0][0] 
         return J
 
+    def regularize(self, theta):
+        reg = 0.0;
+        theta1 = theta[1:]
+        reg = np.dot(theta1,theta1)
+        return reg
+        
     def costFunctionGrad(self, theta, *args):
         x,y = args
         m = x.shape[0]
         h = self.calcHypothesis(x, theta)
-        grad = 1./m*x.T*(h-y)
+        grad = 1./m*x.T*(h-y) 
+        grad[1:,0] = grad[1:,0] + 1./m*self.lamda_*np.asmatrix(theta[1:]).T
         return np.asarray(grad)[:,0] # return value should be a 1D array of size (ntheta,)
     
     def LinearRegGradientDescent(self, x, y, alpha, niters):
@@ -42,7 +52,7 @@ class linearregression():
         return self.theta
     
     # x, y are of type matrix. theta is of type array
-    def train(self, x,y, method='cg', alpha=1.0, maxiter=None, tol=1e-03):
+    def train(self, x,y, method='cg', alpha=1.0, maxiter=100, tol=1e-03):
         col_one = np.asmatrix(np.ones(x.shape[0])).T
         x = np.c_[col_one, x]
         ntheta = x.shape[1]
@@ -60,4 +70,4 @@ class linearregression():
         x = np.c_[1, x]
         if len(x) != len(self.theta):
             raise ValueError("length of theta and x are %d, %d" %(len(self.theta), len(x)))
-        return self.theta*x.T
+        return self.calcHypothesis(x, self.theta)

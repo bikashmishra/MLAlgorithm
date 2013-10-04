@@ -26,6 +26,13 @@ def main():
     my_lr2.train(x,y,method = 'cg',maxiter=1000,alpha=1.0)
     print my_lr2.gettheta()
 
+#     print 'TEST 3'
+#     x = np.asmatrix( [[0.9, 0], [0.1, 1.0]] ) 
+#     y = np.asmatrix([5.0, 0.0]).T
+#     my_lr3 = lr()
+#     my_lr3.train(x,y)
+#     print my_lr3.gettheta()
+    
 if __name__ == "__main__":
     main()
     
